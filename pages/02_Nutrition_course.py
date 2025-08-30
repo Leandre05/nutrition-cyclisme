@@ -1,12 +1,41 @@
-import streamlit as st, streamlit_authenticator as stauth
+import streamlit as st
+import streamlit_authenticator as stauth
 
-# --- Auth (même logique que dans app.py) ---
+# --- Auth header (compatible toutes versions) ---
 users_ss = st.secrets["credentials"]["usernames"]
-credentials = {"usernames": {u: {"name": i["name"], "email": i["email"], "password": i["password"]} for u,i in users_ss.items()}}
+credentials = {"usernames": {u: {"name": i["name"], "email": i["email"], "password": i["password"]}
+                             for u, i in users_ss.items()}}
 c = st.secrets["cookie"]
-authenticator = stauth.Authenticate(credentials, c["name"], c["key"], int(c["expiry_days"]))
-name, auth_status, username = authenticator.login("Connexion", "main")
-if not auth_status: st.stop()
+cookie_name, cookie_key, cookie_days = c["name"], c["key"], int(c["expiry_days"])
+
+# Instanciation compat (0.3.x et 0.4+)
+try:
+    authenticator = stauth.Authenticate(credentials, cookie_name, cookie_key, cookie_days)
+except TypeError:
+    authenticator = stauth.Authenticate(
+        credentials=credentials,
+        cookie_name=cookie_name,
+        key=cookie_key,
+        cookie_expiry_days=cookie_days,
+    )
+
+# Login compat (0.3.x et 0.4+)
+try:
+    name, auth_status, username = authenticator.login(location="main")
+except TypeError:
+    name, auth_status, username = authenticator.login("Connexion", "main")
+
+if not auth_status:
+    st.stop()
+
+# (facultatif) bouton logout cohérent
+with st.sidebar:
+    st.success(f"Connecté : {name}")
+    try:
+        authenticator.logout(button_name="Se déconnecter", location="sidebar")
+    except TypeError:
+        authenticator.logout("Se déconnecter", "sidebar")
+
 
 st.title("Nutrition — Course")
 # 👉 Colle ici le code de la page Entraînement (calcul gels/boissons…)
