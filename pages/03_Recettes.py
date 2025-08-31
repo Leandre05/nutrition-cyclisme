@@ -36,7 +36,7 @@ with st.sidebar:
     except TypeError:
         authenticator.logout("Se déconnecter", "sidebar")
 
-st.title("Nutrition — Entraînement")
+
 # 👉 Colle ici le code de la page Entraînement (calcul gels/boissons…)
 
 import streamlit as st
