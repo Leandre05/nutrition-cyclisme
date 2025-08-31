@@ -41,7 +41,7 @@ with st.sidebar:
 
 import streamlit as st
 
-st.title("🍚 Recettes d'aliments faits maison")
+st.title("🍚 Recettes faites maison")
 
 with st.expander("🍙 Rice Cake maison (version riz rond)"):
     st.markdown("""
