@@ -83,7 +83,7 @@ st.markdown("""
 Bienvenue sur l’outil créé par le **Comité Haute-Garonne de Cyclisme**.
 
 **Objectif du site**  
-Aider les cyclistes à **bien aborder la nutrition pendant l’effort** (boissons, gels, barres, rice cakes) et à **préparer l’alimentation en vue d’un objectif** (avant, pendant, après), en s’appuyant sur les recommandations scientifiques actuelles.
+T'aider à **bien aborder la nutrition pendant l’effort** (boissons, gels ...) et à **préparer l’alimentation en vue d’un objectif** (avant, pendant, après), en s’appuyant sur les recommandations scientifiques actuelles.
 
 **Navigation**  
 Utilise le menu à gauche pour accéder aux calculateurs et fiches :
