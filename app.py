@@ -76,7 +76,24 @@ with st.sidebar:
     except TypeError:
         authenticator.logout("Se déconnecter", "sidebar")
 
-st.title("Interface Nutrition Cyclisme")
-st.write("Contenu protégé… (colle ensuite ton app ici)")
+# --- Accueil ---
+st.title("Comité Haute-Garonne de Cyclisme — Nutrition")
+
+st.markdown("""
+Bienvenue sur l’outil créé par le **Comité Haute-Garonne de Cyclisme**.
+
+**Objectif du site**  
+Aider les cyclistes à **bien aborder la nutrition pendant l’effort** (boissons, gels, barres, rice cakes) et à **préparer l’alimentation en vue d’un objectif** (avant, pendant, après), en s’appuyant sur les recommandations scientifiques actuelles.
+
+**Navigation**  
+Utilise le menu à gauche pour accéder aux calculateurs et fiches :
+- *Nutrition entraînement* : apports glucidiques et hydratation selon la durée et l’intensité.
+- *Nutrition course* : stratégies d’apport pour la compétition.
+- *Recharge glucidique* : protocoles de chargement avant l’épreuve.
+- *Recettes* : idées pratiques (rice cakes, boissons, etc.).
+""")
+
+st.divider()
+st.caption("Ce site a une visée pédagogique et ne remplace pas un avis médical ou diététique personnalisé.")
 
 
